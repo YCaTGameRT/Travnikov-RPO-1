@@ -274,7 +274,8 @@ int main() {
 	a = rand() % 21 - 10;
 	std::cout << a;
 	*/
-
+	
+	/*
 	int arr[10]{};
 
 	for (int i = 0; i < 10; i++) {
@@ -295,6 +296,7 @@ int main() {
 	}
 	
 	std::cout << "Hello World";
+	*/
 
 	return 0;
 }
