@@ -321,7 +321,7 @@ int main() {
 	}
 	std::cout << "\n\n";
 
-	int arr2[row][col]{ {},{},{} }, arrCol[col];
+	int arr2[row][col]{ {},{},{} };
 	int sumRow = 0, sumCol1 = 0, sumCol2 = 0, sumCol3 = 0, sumCol4 = 0, sumCol5 = 0, allSum = 0;
 
 	for (int i = 0; i < 3; i++) {
@@ -333,7 +333,7 @@ int main() {
 	for (int i = 0; i < 3; i++) {
 		for (int j = 0; j < 5; j++)
 		{
-			std::cout << arr2[i][j] << " ";
+			std::cout << arr2[i][j] << "\t";
 			sumRow = sumRow + arr2[i][j];
 			if (j == 0) {
 				sumCol1 = sumCol1 + arr2[i][j];
@@ -352,12 +352,12 @@ int main() {
 			}
 			allSum = allSum + arr2[i][j];
 		}
-		std::cout << "   | " << sumRow;
+		std::cout << "|\t" << sumRow;
 		sumRow = 0;
 		std::cout << "\n";
 	}
-	std::cout << "------------------\n";
-	std::cout << sumCol1 << " " << sumCol2 << " " << sumCol3 << " " << sumCol4 << " " << sumCol5 << " | " << allSum;
+	std::cout << "---------------------------------------------------\n";
+	std::cout << sumCol1 << "\t" << sumCol2 << "\t" << sumCol3 << "\t" << sumCol4 << "\t" << sumCol5 << "\t|\t" << allSum;
 
 	return 0;
 }
