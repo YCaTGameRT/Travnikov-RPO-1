@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstdlib>
+#include <Windows.h>
 
 /*
 	Типы данных
@@ -25,7 +26,9 @@
 */
 
 int main() {
-	setlocale(LC_ALL, "ru");
+	// setlocale(LC_ALL, "ru");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	srand(time(NULL));
 
 	/*
@@ -297,6 +300,64 @@ int main() {
 	
 	std::cout << "Hello World";
 	*/
+	
+	const int col = 5;
+	const int row = 3;
+
+	int arr[row][col]{ {1,2,3,4,5},{5,6,7,8,9},{} };
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 5; j++)
+		{
+			arr[i][j] = 1;
+		}
+	}
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 5; j++)
+		{
+			std::cout << arr[i][j] << " ";
+		}
+		std::cout << "\n";
+	}
+	std::cout << "\n\n";
+
+	int arr2[row][col]{ {},{},{} }, arrCol[col];
+	int sumRow = 0, sumCol1 = 0, sumCol2 = 0, sumCol3 = 0, sumCol4 = 0, sumCol5 = 0, allSum = 0;
+
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 5; j++)
+		{
+			arr2[i][j] = rand() % 10;
+		}
+	}
+	for (int i = 0; i < 3; i++) {
+		for (int j = 0; j < 5; j++)
+		{
+			std::cout << arr2[i][j] << " ";
+			sumRow = sumRow + arr2[i][j];
+			if (j == 0) {
+				sumCol1 = sumCol1 + arr2[i][j];
+			}
+			else if (j == 1) {
+				sumCol2 = sumCol2 + arr2[i][j];
+			}
+			else if (j == 2) {
+				sumCol3 = sumCol3 + arr2[i][j];
+			}
+			else if (j == 3) {
+				sumCol4 = sumCol4 + arr2[i][j];
+			}
+			else if (j == 4) {
+				sumCol5 = sumCol5 + arr2[i][j];
+			}
+			allSum = allSum + arr2[i][j];
+		}
+		std::cout << "   | " << sumRow;
+		sumRow = 0;
+		std::cout << "\n";
+	}
+	std::cout << "------------------\n";
+	std::cout << sumCol1 << " " << sumCol2 << " " << sumCol3 << " " << sumCol4 << " " << sumCol5 << " | " << allSum;
 
 	return 0;
 }
