@@ -25,11 +25,22 @@
 
 */
 
+/*
+тип_возврата имя_функции(фргументы_функции) {
+	тело_функции
+}
+*/
+
+void PrintHelloWorld() {
+	std::cout << "Hello World";
+}
+
 int main() {
 	// setlocale(LC_ALL, "ru");
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	srand(time(NULL));
+	PrintHelloWorld();
 
 	/*
 	int one = 10, two, three = one * 5;
@@ -301,6 +312,7 @@ int main() {
 	std::cout << "Hello World";
 	*/
 	
+	/*
 	const int col = 5;
 	const int row = 3;
 
@@ -358,6 +370,9 @@ int main() {
 	}
 	std::cout << "---------------------------------------------------\n";
 	std::cout << sumCol1 << "\t" << sumCol2 << "\t" << sumCol3 << "\t" << sumCol4 << "\t" << sumCol5 << "\t|\t" << allSum;
-
+	*/
+	
+	
+	
 	return 0;
 }
