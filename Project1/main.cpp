@@ -35,12 +35,52 @@ void PrintHelloWorld() {
 	std::cout << "Hello World\n";
 }
 
-void PrintInt(int number) {
-	std::cout << number;
+void SetArr(int arr[], int size) {
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = i;
+	}
 }
 
-int SetNumber(int number, int d, float b) {
-	return number + d;
+void PrintArr(int arr[], int size) {
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << arr[i] << " ";
+	}
+}
+
+void Revert(int arr1[], int arr2[], int arr3[], int size) {
+	int num = 0;
+	for (int i = 0; i < size; i++)
+	{
+		num = arr1[i];
+		arr1[i] = arr2[i];
+		arr2[i] = num;
+	}
+}
+
+double Addition(double first, double secound);
+double Subtraction(double first, double secound);
+double Multiplication(double first, double secound);
+double Division(double first, double secound);
+
+int main() {
+	// setlocale(LC_ALL, "ru");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+	srand(time(NULL));
+	PrintHelloWorld();
+
+	const int size = 10;
+	int arr1[size], arr2[size];
+
+	SetArr(arr1, size);
+	SetArr(arr2, size);
+
+	
+	
+	
+	return 0;
 }
 
 double Addition(double first, double secound) {
@@ -55,17 +95,6 @@ double Multiplication(double first, double secound) {
 double Division(double first, double secound) {
 	return first / secound;
 }
-
-int main() {
-	// setlocale(LC_ALL, "ru");
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
-	srand(time(NULL));
-	PrintHelloWorld();
-
-	int a = 100;
-	a = SetNumber(a, 50, 112.41);
-	std::cout << a << "\n\n\n";
 
 	/*
 	int one = 10, two, three = one * 5;
@@ -167,17 +196,17 @@ int main() {
 		a++;
 	} while (a < 5);
 	*/
-	
+
 	/*
 	char star = '*';
 	int a = 0;
-	
+
 	for (int i = 0; i < 5; i++)
 	{
 		std::cout << star << " ";
 	}
 	*/
-	
+
 	/*
 	double rub = 0.00;
 	double usd = 83.35;
@@ -291,11 +320,11 @@ int main() {
 		}
 	}
 	*/
-	
+
 	/*
-	
+
 		тип_данных имя_массива[размер_массива]
-	
+
 	int arr[6]{};
 	int sum = 0;
 
@@ -306,14 +335,14 @@ int main() {
 	}
 	std::cout << "сумма = " << sum;
 	*/
-	
+
 	/*
 	int a;
 
 	a = rand() % 21 - 10;
 	std::cout << a;
 	*/
-	
+
 	/*
 	int arr[10]{};
 
@@ -333,10 +362,10 @@ int main() {
 			std::cout << arr[i] << " ";
 		}
 	}
-	
+
 	std::cout << "Hello World";
 	*/
-	
+
 	/*
 	const int col = 5;
 	const int row = 3;
@@ -397,29 +426,33 @@ int main() {
 	std::cout << sumCol1 << "\t" << sumCol2 << "\t" << sumCol3 << "\t" << sumCol4 << "\t" << sumCol5 << "\t|\t" << allSum;
 	*/
 
-	int num1, num2;
-	char sym;
-	std::cout << "Введите первое число -> ";
-	std::cin >> num1;
-	std::cout << "Введите оператор -> ";
-	std::cin >> sym;
-	std::cout << "Введите второе число -> ";
-	std::cin >> num2;
+	/*
+		double num1, num2;
+		char sym;
+		std::cout << "Введите первое число -> ";
+		std::cin >> num1;
+		std::cout << "Введите оператор -> ";
+		std::cin >> sym;
+		std::cout << "Введите второе число -> ";
+		std::cin >> num2;
 
-	switch (sym) {
-		case '+':
-			std::cout << "Сумма = " << Addition(num1, num2);
-			break;
-		case '-':
-			std::cout << "Разность = " << Subtraction(num1, num2);
-			break;
-		case '*':
-			std::cout << "Произведение = " << Multiplication(num1, num2);
-			break;
-		case '/':
-			std::cout << "Частное = " << Division(num1, num2);
-			break;
-	}
-	
-	return 0;
-}
+		if (sym == '/' && num2 == 0) {
+			std::cout << "Делить на ноль нельзя";
+		}
+		else {
+			switch (sym) {
+			case '+':
+				std::cout << "Сумма = " << Addition(num1, num2);
+				break;
+			case '-':
+				std::cout << "Разность = " << Subtraction(num1, num2);
+				break;
+			case '*':
+				std::cout << "Произведение = " << Multiplication(num1, num2);
+				break;
+			case '/':
+				std::cout << "Частное = " << Division(num1, num2);
+				break;
+			}
+		}
+		*/
