@@ -32,7 +32,28 @@
 */
 
 void PrintHelloWorld() {
-	std::cout << "Hello World";
+	std::cout << "Hello World\n";
+}
+
+void PrintInt(int number) {
+	std::cout << number;
+}
+
+int SetNumber(int number, int d, float b) {
+	return number + d;
+}
+
+double Addition(double first, double secound) {
+	return first + secound;
+}
+double Subtraction(double first, double secound) {
+	return first - secound;
+}
+double Multiplication(double first, double secound) {
+	return first * secound;
+}
+double Division(double first, double secound) {
+	return first / secound;
 }
 
 int main() {
@@ -41,6 +62,10 @@ int main() {
 	SetConsoleOutputCP(1251);
 	srand(time(NULL));
 	PrintHelloWorld();
+
+	int a = 100;
+	a = SetNumber(a, 50, 112.41);
+	std::cout << a << "\n\n\n";
 
 	/*
 	int one = 10, two, three = one * 5;
@@ -371,8 +396,30 @@ int main() {
 	std::cout << "---------------------------------------------------\n";
 	std::cout << sumCol1 << "\t" << sumCol2 << "\t" << sumCol3 << "\t" << sumCol4 << "\t" << sumCol5 << "\t|\t" << allSum;
 	*/
-	
-	
+
+	int num1, num2;
+	char sym;
+	std::cout << "Введите первое число -> ";
+	std::cin >> num1;
+	std::cout << "Введите оператор -> ";
+	std::cin >> sym;
+	std::cout << "Введите второе число -> ";
+	std::cin >> num2;
+
+	switch (sym) {
+		case '+':
+			std::cout << "Сумма = " << Addition(num1, num2);
+			break;
+		case '-':
+			std::cout << "Разность = " << Subtraction(num1, num2);
+			break;
+		case '*':
+			std::cout << "Произведение = " << Multiplication(num1, num2);
+			break;
+		case '/':
+			std::cout << "Частное = " << Division(num1, num2);
+			break;
+	}
 	
 	return 0;
 }
