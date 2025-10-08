@@ -54,6 +54,8 @@ void PrintArr(bool arr[], int size);
 void SetArr(int arr[], int size);
 void SetArr(char arr[], int size);
 void SetArr(bool arr[], int size);
+int NoMult(int num1, int num2);
+void JuceMenu(const int price[]);
 
 template<typename T, typename B> B Sum(T first, B name) {
 	return (B)(first + name);
@@ -77,6 +79,36 @@ int main() {
 	PrintArr(arr2, size);
 	PrintArr(arr3, size);
 	*/
+	/*
+	int num1, num2;
+	std::cout << "Введите первое число -> ";
+	std::cin >> num1;
+	std::cout << "Введите второе число -> ";
+	std::cin >> num2;
+	std::cout << NoMult(num1, num2);
+	*/
+
+	const int price[3][4]{ {100, 120, 200, 200}, {150, 300, 280, 0}, {320, 350, 0, 0} };
+	int value = 1, cat = 0, prod = 0, sum = 0, value2 = 0;
+	JuceMenu(price);
+	do {
+		std::cout << "Выберите категорию -> ";
+		std::cin >> cat;
+		std::cout << "Выберите продукт -> ";
+		std::cin >> prod;
+		std::cout << "Введите количество продукта, для выхода введите 0 -> ";
+		std::cin >> value;
+		if (value > 0) {
+			sum += price[cat][prod] * value;
+			std::cout << "\n";
+		}
+		else if (value < 0) {
+			std::cout << "Ошибка! Количество меньше нуля";
+		}
+	} while (value != 0);
+
+	
+
 
 
 	return 0;
@@ -138,6 +170,12 @@ void SetArr(bool arr[], int size) {
 	{
 		arr[i] = rand() % 2;
 	}
+}
+int NoMult(int num1, int num2) {
+	return (num2 == 0) ? 0 : num1 + NoMult(num1, num2 - 1);
+}
+void JuceMenu(const int price[][]) {
+	std::cout << "Выберите товар:\n1 .Фруктовые:\n1. яблочный - " << price[0][0] << " р.\n2. апельсиновый - " << price[0][1] << " р.\n3. абрикосовый - " << price[0][2] << " р.\n4. грушевый - " << price[0][3] << " р.\n\n2. Овощные:\n1. томатный - " << price[1][0] << " р.\n2. луковый - " << price[1][1] << " р.\n3. огуречный - " << price[1][2] << " р.\n\n3. Чай:\n1. чесночный - " << price[2][0] << " р.\n2. петрушковый - " << price[2][1] << " р.\n\n";
 }
 
 /*
