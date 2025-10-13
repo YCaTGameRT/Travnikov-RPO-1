@@ -55,7 +55,6 @@ void SetArr(int arr[], int size);
 void SetArr(char arr[], int size);
 void SetArr(bool arr[], int size);
 int NoMult(int num1, int num2);
-void JuceMenu(const int price[]);
 
 template<typename T, typename B> B Sum(T first, B name) {
 	return (B)(first + name);
@@ -89,23 +88,50 @@ int main() {
 	*/
 
 	const int price[3][4]{ {100, 120, 200, 200}, {150, 300, 280, 0}, {320, 350, 0, 0} };
-	int value = 1, cat = 0, prod = 0, sum = 0, value2 = 0;
-	JuceMenu(price);
+	int value[3][4]{ {}, {}, {} }, cat = 0, prod = 0, sum = 0, sell3 = 0, sell1 = 0;
+	bool sell2 = false;
+	std::cout << "Выберите товар:\n1 .Фруктовые:\n1. яблочный - " << price[0][0] << " р.\n2. апельсиновый - " << price[0][1] << " р.\n3. абрикосовый - " << price[0][2] << " р.\n4. грушевый - " << price[0][3] << " р.\n\n2. Овощные:\n1. томатный - " << price[1][0] << " р.\n2. луковый - " << price[1][1] << " р.\n3. огуречный - " << price[1][2] << " р.\n\n3. Чай:\n1. чесночный - " << price[2][0] << " р.\n2. петрушковый - " << price[2][1] << " р.\n\n";
 	do {
-		std::cout << "Выберите категорию -> ";
+		std::cout << "Выберите категорию, для выхода введите 0  -> ";
 		std::cin >> cat;
-		std::cout << "Выберите продукт -> ";
+		std::cout << "Выберите продукт, для выхода введите 0  -> ";
 		std::cin >> prod;
+		cat--;
+		prod--;
 		std::cout << "Введите количество продукта, для выхода введите 0 -> ";
-		std::cin >> value;
-		if (value > 0) {
-			sum += price[cat][prod] * value;
+		std::cin >> value[cat][prod];
+		if (value[cat][prod] > 0) {
+			sum += price[cat][prod] * value[cat][prod];
 			std::cout << "\n";
 		}
-		else if (value < 0) {
+		else if (value[cat][prod] < 0) {
 			std::cout << "Ошибка! Количество меньше нуля";
 		}
-	} while (value != 0);
+	} while (value[cat][prod] != 0);
+	if (value[2][1] == 3) {
+		sell1 = price[2][1] - price[2][1] * 5 / 100;
+		sum = sum - sell1;
+	}
+	if (sum > 400) {
+		sum = sum - sum * 13 / 100;
+		sell2 = true;
+	}
+	if (value[1][1] > 3) {
+		sell3 = price[1][1] * (value[1][1] - value[1][1] / 4);
+		sum = sum - sell3;
+	}
+	
+	std::cout << "\n";
+	if (sell1 > 0) {
+		std::cout << "Была скидка №1 " << sell1 << " р.\n";
+	}
+	if (sell2 == true) {
+		std::cout << "Была скидка №2\n";
+	}
+	if (sell3 > 0) {
+		std::cout << "Была скидка №3 " << sell3 << " р.\n";
+	}
+	std::cout << "Сумма покупки: " << sum;
 
 	
 
@@ -173,9 +199,6 @@ void SetArr(bool arr[], int size) {
 }
 int NoMult(int num1, int num2) {
 	return (num2 == 0) ? 0 : num1 + NoMult(num1, num2 - 1);
-}
-void JuceMenu(const int price[][]) {
-	std::cout << "Выберите товар:\n1 .Фруктовые:\n1. яблочный - " << price[0][0] << " р.\n2. апельсиновый - " << price[0][1] << " р.\n3. абрикосовый - " << price[0][2] << " р.\n4. грушевый - " << price[0][3] << " р.\n\n2. Овощные:\n1. томатный - " << price[1][0] << " р.\n2. луковый - " << price[1][1] << " р.\n3. огуречный - " << price[1][2] << " р.\n\n3. Чай:\n1. чесночный - " << price[2][0] << " р.\n2. петрушковый - " << price[2][1] << " р.\n\n";
 }
 
 /*
