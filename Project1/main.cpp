@@ -55,9 +55,19 @@ void SetArr(int arr[], int size);
 void SetArr(char arr[], int size);
 void SetArr(bool arr[], int size);
 int NoMult(int num1, int num2);
+void MakeMore(int* num);
+void MakeM(int& num);
+void MySwap(int& a, int& b);
 
 template<typename T, typename B> B Sum(T first, B name) {
 	return (B)(first + name);
+}
+
+void ShortArr(short* arr) {
+	for (int i = 0; i < 5; i++) {
+		*(arr + i) = rand() % 10;
+		std::cout << *(arr + i) << "\t" << arr + i << "\n";
+	}
 }
 
 int main() {
@@ -67,73 +77,18 @@ int main() {
 	srand(time(NULL));
 	PrintHelloWorld();
 	/*
-	const int size = 5;
-	int arr1[size]{};
-	char arr2[size];
-	bool arr3[size];
-	SetArr(arr1, size);
-	SetArr(arr2, size);
-	SetArr(arr3, size);
-	PrintArr(arr1, size);
-	PrintArr(arr2, size);
-	PrintArr(arr3, size);
-	*/
-	/*
-	int num1, num2;
-	std::cout << "Введите первое число -> ";
-	std::cin >> num1;
-	std::cout << "Введите второе число -> ";
-	std::cin >> num2;
-	std::cout << NoMult(num1, num2);
+	int a = 2;
+	int* ptr = &a;
+	// std::cout << a << "\n" << &a << "\n" << ptr << "\n" << &ptr << "\n" << *ptr << "\n";
+	MakeMore(ptr);
+	MakeM(a);
+	std::cout << a << "\n";
 	*/
 
-	const int price[3][4]{ {100, 120, 200, 200}, {150, 300, 280, 0}, {320, 350, 0, 0} };
-	int value[3][4]{ {}, {}, {} }, cat = 0, prod = 0, sum = 0, sell3 = 0, sell1 = 0;
-	bool sell2 = false;
-	std::cout << "Выберите товар:\n1 .Фруктовые:\n1. яблочный - " << price[0][0] << " р.\n2. апельсиновый - " << price[0][1] << " р.\n3. абрикосовый - " << price[0][2] << " р.\n4. грушевый - " << price[0][3] << " р.\n\n2. Овощные:\n1. томатный - " << price[1][0] << " р.\n2. луковый - " << price[1][1] << " р.\n3. огуречный - " << price[1][2] << " р.\n\n3. Чай:\n1. чесночный - " << price[2][0] << " р.\n2. петрушковый - " << price[2][1] << " р.\n\n";
-	do {
-		std::cout << "Выберите категорию, для выхода введите 0  -> ";
-		std::cin >> cat;
-		std::cout << "Выберите продукт, для выхода введите 0  -> ";
-		std::cin >> prod;
-		cat--;
-		prod--;
-		std::cout << "Введите количество продукта, для выхода введите 0 -> ";
-		std::cin >> value[cat][prod];
-		if (value[cat][prod] > 0) {
-			sum += price[cat][prod] * value[cat][prod];
-			std::cout << "\n";
-		}
-		else if (value[cat][prod] < 0) {
-			std::cout << "Ошибка! Количество меньше нуля";
-		}
-	} while (value[cat][prod] != 0);
-	if (value[2][1] == 3) {
-		sell1 = price[2][1] - price[2][1] * 5 / 100;
-		sum = sum - sell1;
-	}
-	if (sum > 400) {
-		sum = sum - sum * 13 / 100;
-		sell2 = true;
-	}
-	if (value[1][1] > 3) {
-		sell3 = price[1][1] * (value[1][1] - value[1][1] / 4);
-		sum = sum - sell3;
-	}
-	
-	std::cout << "\n";
-	if (sell1 > 0) {
-		std::cout << "Была скидка №1 " << sell1 << " р.\n";
-	}
-	if (sell2 == true) {
-		std::cout << "Была скидка №2\n";
-	}
-	if (sell3 > 0) {
-		std::cout << "Была скидка №3 " << sell3 << " р.\n";
-	}
-	std::cout << "Сумма покупки: " << sum;
+	short arr[5];
 
-	
+	ShortArr(arr);
+
 
 
 
@@ -200,13 +155,23 @@ void SetArr(bool arr[], int size) {
 int NoMult(int num1, int num2) {
 	return (num2 == 0) ? 0 : num1 + NoMult(num1, num2 - 1);
 }
-
+void MakeMore(int* num) {
+	*num += 2;
+}
+void MakeM(int& num) {
+	num += 2;
+}
+void MySwap(int& a, int& b) {
+	int tmp;
+	tmp = a;
+	a = b;
+	b = tmp;
+}
 /*
 int one = 10, two, three = one * 5;
 double four = 123.545
 std::cout << "который пьёт Фарит\n\t" << one * 3 << "\nу Фарита\n\t\t" << 12413 << "\nдля апокалипсиса";
 */
-
 /*
 double one = 0;
 double two = 0;
@@ -218,7 +183,6 @@ std::cin >> two;
 
 std::cout << "сумма = " << one + two << "\nразница = " << one - two << "\nпроизведение = " << one * two << "\nчастное = " << one / two;
 */
-
 /*
 int num = 0;
 std::cout << "Введи число от 1 до 2 включительно -> ";
@@ -232,7 +196,6 @@ switch (num) {
 		break;
 }
 */
-
 /*
 double one = 0;
 char sym;
@@ -266,7 +229,6 @@ switch (sym) {
 		std::cout << "error";
 }
 */
-
 /*
 char star = '*';
 
@@ -291,7 +253,6 @@ for (int i = -8; i < 9; i++) {
 	std::cout << "\n";
 }
 */
-
 /*
 char star = '*';
 int a = 0;
@@ -301,7 +262,6 @@ do {
 	a++;
 } while (a < 5);
 */
-
 /*
 char star = '*';
 int a = 0;
@@ -311,7 +271,6 @@ for (int i = 0; i < 5; i++)
 	std::cout << star << " ";
 }
 */
-
 /*
 double rub = 0.00;
 double usd = 83.35;
@@ -425,7 +384,6 @@ while (true) {
 	}
 }
 */
-
 /*
 
 	тип_данных имя_массива[размер_массива]
@@ -440,14 +398,12 @@ for (int i = 0; i < 5; i++) {
 }
 std::cout << "сумма = " << sum;
 */
-
 /*
 int a;
 
 a = rand() % 21 - 10;
 std::cout << a;
 */
-
 /*
 int arr[10]{};
 
@@ -470,7 +426,6 @@ for (int i = 0; i < 10; i++) {
 
 std::cout << "Hello World";
 */
-
 /*
 const int col = 5;
 const int row = 3;
@@ -530,7 +485,6 @@ for (int i = 0; i < 3; i++) {
 std::cout << "---------------------------------------------------\n";
 std::cout << sumCol1 << "\t" << sumCol2 << "\t" << sumCol3 << "\t" << sumCol4 << "\t" << sumCol5 << "\t|\t" << allSum;
 */
-
 /*
 	double num1, num2;
 	char sym;
@@ -561,3 +515,70 @@ std::cout << sumCol1 << "\t" << sumCol2 << "\t" << sumCol3 << "\t" << sumCol4 <<
 		}
 	}
 	*/
+/*
+		const int size = 5;
+		int arr1[size]{};
+		char arr2[size];
+		bool arr3[size];
+		SetArr(arr1, size);
+		SetArr(arr2, size);
+		SetArr(arr3, size);
+		PrintArr(arr1, size);
+		PrintArr(arr2, size);
+		PrintArr(arr3, size);
+		*/
+/*
+		int num1, num2;
+		std::cout << "Введите первое число -> ";
+		std::cin >> num1;
+		std::cout << "Введите второе число -> ";
+		std::cin >> num2;
+		std::cout << NoMult(num1, num2);
+		*/
+/*
+		const int price[3][4]{ {100, 120, 200, 200}, {150, 300, 280, 0}, {320, 350, 0, 0} };
+		int value[3][4]{ {}, {}, {} }, cat = 0, prod = 0, sum = 0, sell3 = 0, sell1 = 0;
+		bool sell2 = false;
+		std::cout << "Выберите товар:\n1 .Фруктовые:\n1. яблочный - " << price[0][0] << " р.\n2. апельсиновый - " << price[0][1] << " р.\n3. абрикосовый - " << price[0][2] << " р.\n4. грушевый - " << price[0][3] << " р.\n\n2. Овощные:\n1. томатный - " << price[1][0] << " р.\n2. луковый - " << price[1][1] << " р.\n3. огуречный - " << price[1][2] << " р.\n\n3. Чай:\n1. чесночный - " << price[2][0] << " р.\n2. петрушковый - " << price[2][1] << " р.\n\n";
+		do {
+			std::cout << "Выберите категорию, для выхода введите 0  -> ";
+			std::cin >> cat;
+			std::cout << "Выберите продукт, для выхода введите 0  -> ";
+			std::cin >> prod;
+			cat--;
+			prod--;
+			std::cout << "Введите количество продукта, для выхода введите 0 -> ";
+			std::cin >> value[cat][prod];
+			if (value[cat][prod] > 0) {
+				sum += price[cat][prod] * value[cat][prod];
+				std::cout << "\n";
+			}
+			else if (value[cat][prod] < 0) {
+				std::cout << "Ошибка! Количество меньше нуля";
+			}
+		} while (value[cat][prod] != 0);
+		if (value[2][1] == 3) {
+			sell1 = price[2][1] - price[2][1] * 5 / 100;
+			sum = sum - sell1;
+		}
+		if (sum > 400) {
+			sum = sum - sum * 13 / 100;
+			sell2 = true;
+		}
+		if (value[1][1] > 3) {
+			sell3 = price[1][1] * (value[1][1] - value[1][1] / 4);
+			sum = sum - sell3;
+		}
+
+		std::cout << "\n";
+		if (sell1 > 0) {
+			std::cout << "Была скидка №1 " << sell1 << " р.\n";
+		}
+		if (sell2 == true) {
+			std::cout << "Была скидка №2\n";
+		}
+		if (sell3 > 0) {
+			std::cout << "Была скидка №3 " << sell3 << " р.\n";
+		}
+		std::cout << "Сумма покупки: " << sum;
+		*/
