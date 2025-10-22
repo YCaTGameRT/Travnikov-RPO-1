@@ -25,25 +25,12 @@
 
 */
 
-/*
-тип_возврата имя_функции(фргументы_функции) {
-	тело_функции
-}
-*/
-
 void PrintHelloWorld() {
 	std::cout << "Hello World\n";
 }
 
-double Sum(double num1, double num2) {
-	return num1 + num2;
-}
-
-float Sum(float num1, float num2) {
-	return num1 + num2;
-}
-
-
+double Sum(double num1, double num2);
+float Sum(float num1, float num2);
 double Addition(double first, double secound);
 double Subtraction(double first, double secound);
 double Multiplication(double first, double secound);
@@ -58,17 +45,14 @@ int NoMult(int num1, int num2);
 void MakeMore(int* num);
 void MakeM(int& num);
 void MySwap(int& a, int& b);
+void ShortArr(short* arr);
+void DinamycArr(int* &arr, int &size, int num);
 
 template<typename T, typename B> B Sum(T first, B name) {
 	return (B)(first + name);
 }
 
-void ShortArr(short* arr) {
-	for (int i = 0; i < 5; i++) {
-		*(arr + i) = rand() % 10;
-		std::cout << *(arr + i) << "\t" << arr + i << "\n";
-	}
-}
+
 
 int main() {
 	// setlocale(LC_ALL, "ru");
@@ -84,17 +68,47 @@ int main() {
 	MakeM(a);
 	std::cout << a << "\n";
 	*/
+	/*
+	int* data = new int;
+	//data = new int;
+	*data = 100;
+	std::cout << *data << "\n";
+	delete data;
 
-	short arr[5];
+	data = new int;
+	*data = 1000;
+	std::cout << *data << "\n";
+	delete data;
 
-	ShortArr(arr);
+	int newSize = 0;
+	std::cin >> newSize;
+	data = new int[newSize];
+	data[0] = 100;
+	delete[]data;
+	*/
+	int num;
+	int arrSize = 5;
+	int* arr = new int[arrSize];
 
-
+	SetArr(arr, arrSize);
+	PrintArr(arr, arrSize);
+	std::cout << "\n";
+	std::cout << "Введите число -> ";
+	std::cin >> num;
+	DinamycArr(arr, arrSize, num);
+	PrintArr(arr, arrSize);
+	delete[]arr;
 
 
 	return 0;
 }
 
+double Sum(double num1, double num2) {
+	return num1 + num2;
+}
+float Sum(float num1, float num2) {
+	return num1 + num2;
+}
 double Addition(double first, double secound) {
 	return first + secound;
 }
@@ -167,6 +181,31 @@ void MySwap(int& a, int& b) {
 	a = b;
 	b = tmp;
 }
+void ShortArr(short* arr) {
+	for (int i = 0; i < 5; i++) {
+		*(arr + i) = rand() % 10;
+		std::cout << *(arr + i) << "\t" << arr + i << "\n";
+	}
+}
+void DinamycArr(int* &arr, int &size, int num) {
+	int* tmp = new int[size];
+	for (int i = 0; i < size; i++) {
+		tmp[i] = arr[i];
+	}
+	delete[]arr;
+	size = size + 1;
+	arr = new int[size];
+	for (int i = 0; i < size - 1; i++) {
+		arr[i] = tmp[i];
+	}
+	delete[]tmp;
+	arr[size - 1] = num;
+}
+/*
+тип_возврата имя_функции(фргументы_функции) {
+	тело_функции
+}
+*/
 /*
 int one = 10, two, three = one * 5;
 double four = 123.545
