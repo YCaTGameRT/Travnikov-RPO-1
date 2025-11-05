@@ -1,6 +1,12 @@
 #include <iostream>
 #include <cstdlib>
 #include <Windows.h>
+#include <string>
+#include <limits>
+
+#ifdef max
+#undef max
+#endif
 
 /*
 	“ипы данных
@@ -60,44 +66,31 @@ int main() {
 	SetConsoleOutputCP(1251);
 	srand(time(NULL));
 	PrintHelloWorld();
-	/*
-	int a = 2;
-	int* ptr = &a;
-	// std::cout << a << "\n" << &a << "\n" << ptr << "\n" << &ptr << "\n" << *ptr << "\n";
-	MakeMore(ptr);
-	MakeM(a);
-	std::cout << a << "\n";
-	*/
-	/*
-	int* data = new int;
-	//data = new int;
-	*data = 100;
-	std::cout << *data << "\n";
-	delete data;
-
-	data = new int;
-	*data = 1000;
-	std::cout << *data << "\n";
-	delete data;
-
-	int newSize = 0;
-	std::cin >> newSize;
-	data = new int[newSize];
-	data[0] = 100;
-	delete[]data;
-	*/
-	int num;
-	int arrSize = 5;
-	int* arr = new int[arrSize];
-
-	SetArr(arr, arrSize);
-	PrintArr(arr, arrSize);
-	std::cout << "\n";
-	std::cout << "¬ведите число -> ";
-	std::cin >> num;
-	DinamycArr(arr, arrSize, num);
-	PrintArr(arr, arrSize);
-	delete[]arr;
+	
+	std::string login, password, loginIn, passwordIn;
+	
+	do {
+		std::cout << "\n–≈√»—“–ј÷»я\n";
+		std::cout << "¬ведите логин\n";
+		std::getline(std::cin, login, '\n');
+		std::cout << "¬ведите пароль\n";
+		std::getline(std::cin, password, '\n');
+	} while (login.size() > 10 && password.size() > 15);
+	while (true) {
+		std::cout << "\nј¬“ќ–»«ј÷»я\n";
+		std::cout << "¬ведите логин\n";
+		std::getline(std::cin, loginIn, '\n');
+		std::cout << "¬ведите пароль\n";
+		std::getline(std::cin, passwordIn, '\n');
+		if (login !=loginIn || password != passwordIn) {
+			std::cout << "Ќеправильный логин или пароль!\n";
+		}
+		else {
+			std::cout << "¬ы успешно авторизовались\n";
+			break;
+		}
+	}
+	
 
 
 	return 0;
@@ -620,4 +613,65 @@ std::cout << sumCol1 << "\t" << sumCol2 << "\t" << sumCol3 << "\t" << sumCol4 <<
 			std::cout << "Ѕыла скидка є3 " << sell3 << " р.\n";
 		}
 		std::cout << "—умма покупки: " << sum;
+*/
+/*
+	int a = 2;
+	int* ptr = &a;
+	// std::cout << a << "\n" << &a << "\n" << ptr << "\n" << &ptr << "\n" << *ptr << "\n";
+	MakeMore(ptr);
+	MakeM(a);
+	std::cout << a << "\n";
+	*/
+/*
+	int* data = new int;
+	//data = new int;
+	*data = 100;
+	std::cout << *data << "\n";
+	delete data;
+
+	data = new int;
+	*data = 1000;
+	std::cout << *data << "\n";
+	delete data;
+
+	int newSize = 0;
+	std::cin >> newSize;
+	data = new int[newSize];
+	data[0] = 100;
+	delete[]data;
+	*/
+/*
+	int num;
+	int arrSize = 5;
+	int* arr = new int[arrSize];
+
+	SetArr(arr, arrSize);
+	PrintArr(arr, arrSize);
+	std::cout << "\n";
+	std::cout << "¬ведите число -> ";
+	std::cin >> num;
+	DinamycArr(arr, arrSize, num);
+	PrintArr(arr, arrSize);
+	delete[]arr;
+	*/
+	/*
+		std::string name = "free text\t";
+		int a = 0;
+
+		name += "is cool, ура";
+		std::cout << name << "\n";
+		std::getline(std::cin, name, '\n');
+		std::cout << name << "\n";
+		std::cin >> a;
+		std::cin.ignore(32000, '\n');
+		std::getline(std::cin, name, '\n');
+		std::cout << name << "\n";
+		std::cin >> a;
+		std::cin.ignore(32000, '\n');
+		// std::numeric_limits<std::streamsize()>::max();
+		std::getline(std::cin, name, '\n');
+		std::cout << name << "\n";
+		if (name == "text") {
+
+		}
 		*/
