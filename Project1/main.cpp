@@ -67,30 +67,8 @@ int main() {
 	srand(time(NULL));
 	PrintHelloWorld();
 	
-	std::string login, password, loginIn, passwordIn;
 	
-	do {
-		std::cout << "\nРЕГИСТРАЦИЯ\n";
-		std::cout << "Введите логин\n";
-		std::getline(std::cin, login, '\n');
-		std::cout << "Введите пароль\n";
-		std::getline(std::cin, password, '\n');
-	} while (login.size() > 10 && password.size() > 15);
-	while (true) {
-		std::cout << "\nАВТОРИЗАЦИЯ\n";
-		std::cout << "Введите логин\n";
-		std::getline(std::cin, loginIn, '\n');
-		std::cout << "Введите пароль\n";
-		std::getline(std::cin, passwordIn, '\n');
-		if (login !=loginIn || password != passwordIn) {
-			std::cout << "Неправильный логин или пароль!\n";
-		}
-		else {
-			std::cout << "Вы успешно авторизовались\n";
-			break;
-		}
-	}
-	
+
 
 
 	return 0;
@@ -194,6 +172,9 @@ void DinamycArr(int* &arr, int &size, int num) {
 	delete[]tmp;
 	arr[size - 1] = num;
 }
+
+
+
 /*
 тип_возврата имя_функции(фргументы_функции) {
 	тело_функции
@@ -654,7 +635,7 @@ std::cout << sumCol1 << "\t" << sumCol2 << "\t" << sumCol3 << "\t" << sumCol4 <<
 	PrintArr(arr, arrSize);
 	delete[]arr;
 	*/
-	/*
+/*
 		std::string name = "free text\t";
 		int a = 0;
 
@@ -675,3 +656,28 @@ std::cout << sumCol1 << "\t" << sumCol2 << "\t" << sumCol3 << "\t" << sumCol4 <<
 
 		}
 		*/
+/*
+			std::string login, password, loginIn, passwordIn;
+
+			do {
+				std::cout << "\nРЕГИСТРАЦИЯ\n";
+				std::cout << "Введите логин\n";
+				std::getline(std::cin, login, '\n');
+				std::cout << "Введите пароль\n";
+				std::getline(std::cin, password, '\n');
+			} while (login.size() > 10 && password.size() > 15);
+			while (true) {
+				std::cout << "\nАВТОРИЗАЦИЯ\n";
+				std::cout << "Введите логин\n";
+				std::getline(std::cin, loginIn, '\n');
+				std::cout << "Введите пароль\n";
+				std::getline(std::cin, passwordIn, '\n');
+				if (login !=loginIn || password != passwordIn) {
+					std::cout << "Неправильный логин или пароль!\n";
+				}
+				else {
+					std::cout << "Вы успешно авторизовались\n";
+					break;
+				}
+			}
+			*/
